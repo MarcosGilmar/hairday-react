@@ -1,5 +1,9 @@
 import Text from "./components/text"
 import Icon from "./components/icon"
+import Button from "./components/button"
+import ButtonIcon from "./components/button-icon"
+import TextInput from "./components/input-text"
+import TimeSelect from "./components/time-select"
 import CalendarBlank from "./assets/icons/CalendarBlank.svg?react"
 import CaretDown from "./assets/icons/CaretDown.svg?react"
 import CaretLeft from "./assets/icons/CaretLeft.svg?react"
@@ -9,7 +13,7 @@ import MoonStars from "./assets/icons/MoonStars.svg?react"
 import SunHorizon from "./assets/icons/SunHorizon.svg?react"
 import Trash from "./assets/icons/Trash.svg?react"
 import UserSquare from "./assets/icons/UserSquare.svg?react"
-import Button from "./components/button"
+
 
 
 export default function App() {
@@ -37,6 +41,20 @@ export default function App() {
 
     <div>
       <Button>AGENDAR</Button>
+    </div>
+
+    <div>
+      <ButtonIcon icon={Trash}></ButtonIcon>
+    </div>
+
+    <div>
+      <TextInput icon={UserSquare}/>
+    </div>
+
+    <div>
+      <TimeSelect>09:00</TimeSelect>
+      <TimeSelect variant="selected">09:00</TimeSelect>
+      <TimeSelect variant="disabled" >09:00</TimeSelect>
     </div>
     </>
     

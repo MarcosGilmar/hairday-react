@@ -1,7 +1,7 @@
 import React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 
-export const textVariants = cva("font-family-base text-gray-400",{
+export const textVariants = cva("font-family-base text-inherit",{
     variants: {
         variant: {
             "title-lg": "text-4xl leading-6 font-bold",
