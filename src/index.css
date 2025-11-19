@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+input[type="date"]::-webkit-datetime-edit {
+    color: #B2AFB6;
+}
+
 @theme {
     --color-*: initial;
     --color-yellow-light: #DBC170;

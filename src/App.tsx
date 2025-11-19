@@ -4,6 +4,8 @@ import Button from "./components/button"
 import ButtonIcon from "./components/button-icon"
 import TextInput from "./components/input-text"
 import TimeSelect from "./components/time-select"
+import Container from "./components/container"
+import DatePicker from "./components/date-picker"
 import CalendarBlank from "./assets/icons/CalendarBlank.svg?react"
 import CaretDown from "./assets/icons/CaretDown.svg?react"
 import CaretLeft from "./assets/icons/CaretLeft.svg?react"
@@ -14,50 +16,68 @@ import SunHorizon from "./assets/icons/SunHorizon.svg?react"
 import Trash from "./assets/icons/Trash.svg?react"
 import UserSquare from "./assets/icons/UserSquare.svg?react"
 
-
-
 export default function App() {
   return (
-    <>
-      <div className="flex flex-col gap-2">
-      <Text variant="text-md">Teste</Text>
-      <Text variant="text-md">Teste</Text>
-      <Text variant="title-sm">Teste</Text>
-      <Text variant="title-md">Teste</Text>
-      <Text variant="title-lg">Teste</Text>
-    </div>
-    
-    <div>
-      <Icon svg={CalendarBlank} />
-      <Icon svg={CaretDown} />
-      <Icon svg={CaretLeft} />
-      <Icon svg={CaretRight} />
-      <Icon svg={CloudSun} />
-      <Icon svg={MoonStars} />
-      <Icon svg={SunHorizon} />
-      <Icon svg={Trash} />
-      <Icon svg={UserSquare} />
-    </div>
+    <div className="flex">
+      <Container className="flex flex-col gap-2">
+        <Text variant="title-lg" className="text-gray-100">
+          Agende um atendimento
+        </Text>
+        <Text variant="text-sm" className="text-gray-300">
+          Selecione data, horário e informe o nome do cliente para criar o agendamento
+        </Text>
+        <Text variant="title-md" className="text-gray-200 mt-4">
+          Data
+        </Text>
+        <DatePicker icon={CalendarBlank}>
 
-    <div>
-      <Button>AGENDAR</Button>
-    </div>
+        </DatePicker>
 
-    <div>
-      <ButtonIcon icon={Trash}></ButtonIcon>
-    </div>
+      </Container>
 
-    <div>
-      <TextInput icon={UserSquare}/>
-    </div>
+      <Container variant="secondary">
 
-    <div>
-      <TimeSelect>09:00</TimeSelect>
-      <TimeSelect variant="selected">09:00</TimeSelect>
-      <TimeSelect variant="disabled" >09:00</TimeSelect>
+      </Container>
     </div>
-    </>
-    
   )
 }
 
+
+
+{/* <div className="flex flex-col gap-2">
+          <Text variant="text-md">Teste</Text>
+          <Text variant="text-md">Teste</Text>
+          <Text variant="title-sm">Teste</Text>
+          <Text variant="title-md">Teste</Text>
+          <Text variant="title-lg">Teste</Text>
+        </div>
+        
+        <div>
+          <Icon svg={CalendarBlank} />
+          <Icon svg={CaretDown} />
+          <Icon svg={CaretLeft} />
+          <Icon svg={CaretRight} />
+          <Icon svg={CloudSun} />
+          <Icon svg={MoonStars} />
+          <Icon svg={SunHorizon} />
+          <Icon svg={Trash} />
+          <Icon svg={UserSquare} />
+        </div>
+
+        <div>
+          <Button>AGENDAR</Button>
+        </div>
+
+        <div>
+          <ButtonIcon icon={Trash}></ButtonIcon>
+        </div>
+
+        <div>
+          <TextInput icon={UserSquare}/>
+        </div>
+
+        <div>
+          <TimeSelect>09:00</TimeSelect>
+          <TimeSelect variant="selected">09:00</TimeSelect>
+          <TimeSelect variant="disabled" >09:00</TimeSelect>
+        </div> */}
