@@ -48,7 +48,7 @@
                 { icon && (
                 <Icon svg={icon} className={`
                     absolute left-3 top-1/2 -translate-y-1/2 size-5 fill-yellow
-                    `}
+                `}
                 /> 
                 )}
                 <input type="date" className={cx(
