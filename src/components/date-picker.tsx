@@ -30,9 +30,10 @@
         `)
 
     interface DatePickerProps
-        extends Omit<React.ComponentProps<"input">, "size" | "disabled">,
+        extends Omit<React.ComponentProps<"input">, "size" | "disabled" | "value">,
         VariantProps<typeof datePickerVariants> {
-            icon: React.ComponentProps<typeof Icon>["svg"]
+            icon: React.ComponentProps<typeof Icon>["svg"],
+            value: string,
     }
 
     export default function DatePicker({
@@ -51,13 +52,16 @@
                 `}
                 /> 
                 )}
-                <input type="date" className={cx(
-                    "pl-10 cursor-pointer",
-                    datePickerVariants({variant, size, disabled}),
-                    textVariants(),
-                    className
+                <input 
+                    type="date" 
+                    className={cx(
+                        "pl-10 cursor-pointer",
+                        datePickerVariants({variant, size, disabled}),
+                        textVariants(),
+                        className
                     )}
                     {...props}
+                    
                 />
             </label>
         )

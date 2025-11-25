@@ -10,6 +10,7 @@ import CloudSun from "../assets/icons/CloudSun.svg?react"
 import SunHorizon from "../assets/icons/SunHorizon.svg?react"
 import MoonStars from "../assets/icons/MoonStars.svg?react"
 import Trash from "../assets/icons/Trash.svg?react"
+import { useState } from "react"
 
 type ScheduleListProps = React.ComponentProps<"div"> 
 
@@ -17,6 +18,11 @@ export default function ScheduleList({
     className,
     ...props
 }: ScheduleListProps) {
+    
+    const [selectedDate, setSelectedDate] = useState<string>("");
+    //const [selectedHour, setSelectedHour] = useState<string>("");
+    //const [clientName, setClientName] = useState<string>("");
+
     return (
         <Container 
             variant="secondary" 
@@ -34,31 +40,59 @@ export default function ScheduleList({
                     Consulte os seus cortes de cabelo agendados por dia
                 </Text>
                 </div>
-                <DatePicker icon={CalendarBlank}>
+                <DatePicker 
+                    icon={CalendarBlank}
+                    value={selectedDate}
+                    onChange={(e) => setSelectedDate(e.target.value)}
+                >
                 </DatePicker>
             </div>
             <div className="py-8">
                 <div className="my-3">
-                    <ScheduleItem icon={SunHorizon} period="morning">
+                    <ScheduleItem 
+                        icon={SunHorizon} 
+                        period="morning"
+                    >
                     </ScheduleItem>
 
-                    <ScheduleLog icon={Trash} time="13:00" client="Helena Souza" className="-mt-px">
+                    <ScheduleLog 
+                        icon={Trash} 
+                        time="13:00" 
+                        client="Helena Souza" 
+                        className="-mt-px"
+                    >
                     </ScheduleLog>
                 </div>
 
                 <div className="my-3">
-                    <ScheduleItem icon={CloudSun} period="afternoon">
+                    <ScheduleItem 
+                        icon={CloudSun} 
+                        period="afternoon"
+                    >
                     </ScheduleItem>
 
-                    <ScheduleLog icon={Trash} time="13:00" client="Helena Souza" className="-mt-px">
+                    <ScheduleLog 
+                        icon={Trash} 
+                        time="13:00" 
+                        client="Helena Souza" 
+                        className="-mt-px"
+                    >
                     </ScheduleLog>
                 </div>
 
                 <div className="my-3">
-                    <ScheduleItem icon={MoonStars} period="night" >
+                    <ScheduleItem 
+                        icon={MoonStars} 
+                        period="night" 
+                    >
                     </ScheduleItem>
 
-                    <ScheduleLog icon={Trash} time="13:00" client="Helena Souza" className="-mt-px">
+                    <ScheduleLog 
+                        icon={Trash} 
+                        time="13:00" 
+                        client="Helena Souza" 
+                        className="-mt-px"
+                    >
                     </ScheduleLog>
                 </div>
             </div>
