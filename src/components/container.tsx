@@ -2,7 +2,7 @@ import React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 
 export const containerVariants = cva(`
-    flex rounded-xl my-3
+    flex rounded-xl my-3 mx-3
     `,{
         variants: {
             variant: {

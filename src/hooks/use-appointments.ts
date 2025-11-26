@@ -6,11 +6,16 @@ export default function useAppointments() {
     const [appointments, setAppointments] = useLocalStorage<Appointment[]>(APPOINTMENTS_KEY, [])
 
     function AddAppointment(newAppointment: Appointment) {
-        setAppointments([...appointments, newAppointment]);
+        setAppointments((prev) => [...(prev ?? []), newAppointment]);
+    }
+
+    function RemoveAppointment(id: string) {
+        setAppointments((prev) => [...(prev ?? []).filter((appointment) => appointment.id !== id)]);
     }
 
     return {
         appointments,
-        AddAppointment
+        AddAppointment,
+        RemoveAppointment
     }
 }

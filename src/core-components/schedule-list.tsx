@@ -11,17 +11,29 @@ import SunHorizon from "../assets/icons/SunHorizon.svg?react"
 import MoonStars from "../assets/icons/MoonStars.svg?react"
 import Trash from "../assets/icons/Trash.svg?react"
 import { useState } from "react"
+import type { Appointment } from "../models/appointment"
+import { MORNING, AFTERNOON, NIGHT } from "../utils/schedule-hours"
 
-type ScheduleListProps = React.ComponentProps<"div"> 
+
+type ScheduleListProps = React.ComponentProps<"div"> & {
+    appointments: Appointment[],
+    onRemoveAppointment: (id: string) => void;
+}
 
 export default function ScheduleList({
     className,
+    appointments,
+    onRemoveAppointment,
     ...props
 }: ScheduleListProps) {
     
     const [selectedDate, setSelectedDate] = useState<string>("");
-    //const [selectedHour, setSelectedHour] = useState<string>("");
-    //const [clientName, setClientName] = useState<string>("");
+    
+    const filtered = appointments.filter((appointment) => appointment.date === selectedDate);
+
+    const morning = filtered.filter((appointment) => MORNING.includes(appointment.hour));
+    const afternoon = filtered.filter((appointment) => AFTERNOON.includes(appointment.hour));
+    const night = filtered.filter((appointment) => NIGHT.includes(appointment.hour));
 
     return (
         <Container 
@@ -55,13 +67,22 @@ export default function ScheduleList({
                     >
                     </ScheduleItem>
 
-                    <ScheduleLog 
-                        icon={Trash} 
-                        time="13:00" 
-                        client="Helena Souza" 
-                        className="-mt-px"
-                    >
-                    </ScheduleLog>
+                    {morning.map((appointment, index) => (
+                        <ScheduleLog 
+                            id={appointment.id}
+                            icon={Trash} 
+                            time={appointment.hour} 
+                            client={appointment.name}
+                            onRemove={() => onRemoveAppointment(appointment.id)}
+                            className={cx(
+                                "-mt-px",
+                                index === morning.length - 1 && "rounded-b-xl"
+                            )}
+                            
+                        >
+                        </ScheduleLog>
+                    ))}
+                        
                 </div>
 
                 <div className="my-3">
@@ -71,13 +92,20 @@ export default function ScheduleList({
                     >
                     </ScheduleItem>
 
-                    <ScheduleLog 
-                        icon={Trash} 
-                        time="13:00" 
-                        client="Helena Souza" 
-                        className="-mt-px"
-                    >
-                    </ScheduleLog>
+                    {afternoon.map((appointment, index) => (
+                        <ScheduleLog 
+                            id={appointment.id}
+                            icon={Trash} 
+                            time={appointment.hour} 
+                            client={appointment.name}
+                            onRemove={() => onRemoveAppointment(appointment.id)}
+                            className={cx(
+                                "-mt-px",
+                                index === afternoon.length - 1 && "rounded-b-xl"
+                            )}                        
+                        >
+                        </ScheduleLog>
+                    ))}
                 </div>
 
                 <div className="my-3">
@@ -87,13 +115,20 @@ export default function ScheduleList({
                     >
                     </ScheduleItem>
 
-                    <ScheduleLog 
-                        icon={Trash} 
-                        time="13:00" 
-                        client="Helena Souza" 
-                        className="-mt-px"
-                    >
-                    </ScheduleLog>
+                    {night.map((appointment, index) => (
+                        <ScheduleLog 
+                            id={appointment.id}
+                            icon={Trash} 
+                            time={appointment.hour} 
+                            client={appointment.name}
+                            onRemove={() => onRemoveAppointment(appointment.id)}
+                            className={cx(
+                                "-mt-px",
+                                index === night.length - 1 && "rounded-b-xl"
+                            )}
+                        >
+                        </ScheduleLog>
+                    ))}
                 </div>
             </div>
         </Container> 

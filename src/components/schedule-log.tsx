@@ -5,12 +5,12 @@ import Text from "./text"
 
 export const scheduleLogVariants = cva(`
     flex items-center justify-center 
-    rounded-b-xl border
     border-gray-500 py-5 px-5
+    border
     `, {
     variants: {
         size: {
-            md: "w-171 h-18"
+            md: "w-171 h-15"
         }
     },
     defaultVariants: {
@@ -23,7 +23,8 @@ interface ScheduleLogProps
     VariantProps<typeof scheduleLogVariants> {
         time: string,
         client: string,
-        icon: React.ComponentProps<typeof Icon>["svg"]
+        icon: React.ComponentProps<typeof Icon>["svg"],
+        onRemove?: () => void;
     }
 
 export default function ScheduleLog({
@@ -32,8 +33,10 @@ export default function ScheduleLog({
     icon,
     time,
     client,
+    onRemove,
     ...props
-}: ScheduleLogProps) {    
+}: ScheduleLogProps) {  
+
     return (
         <div className={scheduleLogVariants({
             size,
@@ -50,7 +53,12 @@ export default function ScheduleLog({
                         {client}
                     </Text>
                 </div>
-                    <Icon type="button" svg={icon} className="size-5 fill-yellow cursor-pointer"/>
+                    <Icon 
+                        type="button" 
+                        svg={icon} 
+                        className="size-5 fill-yellow cursor-pointer"
+                        onClick={onRemove}
+                    />
                 </div>
             </div>
             
