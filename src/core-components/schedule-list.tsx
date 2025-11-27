@@ -66,8 +66,23 @@ export default function ScheduleList({
                         period="morning"
                     >
                     </ScheduleItem>
+                    
 
-                    {morning.map((appointment, index) => (
+                    {morning.length === 0 ?
+                        (
+                        <Text 
+                            variant="text-sm"
+                            className={`
+                                flex items-center justify-items-start
+                                px-5 py-5 text-gray-400 rounded-b-xl
+                                border border-gray-500 -mt-px
+                            `}
+                        >
+                            Você ainda não tem agendamentos cadastrados para este período
+                        </Text>
+                        )
+                    :
+                    morning.map((appointment, index) => (
                         <ScheduleLog 
                             id={appointment.id}
                             icon={Trash} 
@@ -77,12 +92,11 @@ export default function ScheduleList({
                             className={cx(
                                 "-mt-px",
                                 index === morning.length - 1 && "rounded-b-xl"
-                            )}
-                            
+                            )} 
                         >
                         </ScheduleLog>
                     ))}
-                        
+                
                 </div>
 
                 <div className="my-3">
@@ -92,7 +106,21 @@ export default function ScheduleList({
                     >
                     </ScheduleItem>
 
-                    {afternoon.map((appointment, index) => (
+                    {afternoon.length === 0 ?
+                        (
+                        <Text 
+                            variant="text-sm"
+                            className={`
+                                flex items-center justify-items-start
+                                px-5 py-5 text-gray-400 rounded-b-xl
+                                border border-gray-500 -mt-px
+                            `}
+                        >
+                            Você ainda não tem agendamentos cadastrados para este período
+                        </Text>
+                        )
+                    :
+                    afternoon.map((appointment, index) => (
                         <ScheduleLog 
                             id={appointment.id}
                             icon={Trash} 
@@ -115,7 +143,21 @@ export default function ScheduleList({
                     >
                     </ScheduleItem>
 
-                    {night.map((appointment, index) => (
+                    {night.length === 0 ?
+                        (
+                        <Text 
+                            variant="text-sm"
+                            className={`
+                                flex items-center justify-items-start
+                                px-5 py-5 text-gray-400 rounded-b-xl
+                                border border-gray-500 -mt-px
+                            `}
+                        >
+                            Você ainda não tem agendamentos cadastrados para este período
+                        </Text>
+                        )
+                    :
+                    night.map((appointment, index) => (
                         <ScheduleLog 
                             id={appointment.id}
                             icon={Trash} 

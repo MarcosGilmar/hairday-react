@@ -49,9 +49,9 @@ export default function SideBar({
 
     return (
         <>
-            <Icon svg={Logo} className="absolute"/>
+            <Icon svg={Logo} className="absolute left-0"/>
             
-            <Container className={cx("flex flex-col gap-2 py-20", className)}
+            <Container className={cx("flex flex-col gap-2 py-20 mx-4", className)}
             {...props}
             >
                 <Text variant="title-lg" className="text-gray-100">

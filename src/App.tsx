@@ -8,8 +8,8 @@ export default function App() {
 
   return (
     <main className={`
-      flex flex-col sm:flex-row
-      items-center sm:items-stretch
+      flex flex-row
+      items-center justify-center sm:items-start
     `}>
       <SideBar 
       onAddAppointment={(appointment) => AddAppointment(appointment)}
